@@ -44,15 +44,18 @@ export const getPoducts = (req,res) =>{
 }
 
 export const PostIntoBasket = (req,res)=>{
-     console.log('hellooooo',req.body);
+     console.log('hellooooo',req.body.id);
      const id = req.body.id
-     Product.findById({_id:id},(err,result)=>{
+     Product.findById(id,(err,result)=>{
          if(err){
-             res.send(err);
-            console.log(' cant bring tha data with id');
+            console.log(' cant bring tha data with id',err);
+
+             return res.send(err);
          }
+      
+         console.log("rrrrrrrrrrrrrrrr",result);
          let newBasket = new Basket({
-            productId:result._id,
+            productId:id,
             img:result.img,
             title:result.title,
             price:result.price

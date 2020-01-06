@@ -3,6 +3,7 @@ import {getPoducts} from '../controllers/productController';
 import {PostIntoBasket}  from '../controllers/productController';
 import {addnewSizes} from '../controllers/sizeController';
 import {getSizes} from '../controllers/sizeController';
+import {getItems} from '../controllers/basketController';
 
 const routes =(app)=>{
     app.route('/product')
@@ -12,7 +13,9 @@ const routes =(app)=>{
        .get(getSizes)
        .post(addnewSizes);
    app.route('/shoppingCart')
-      .post(PostIntoBasket)
+      .post(PostIntoBasket);
+   app.route('items')
+       .get(getItems)
     
 }
 
