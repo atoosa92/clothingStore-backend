@@ -49,7 +49,7 @@ export const PostIntoBasket = (req,res)=>{
      Product.findById(id,(err,result)=>{
          if(err){
             console.log(' cant bring tha data with id',err);
-
+            
              return res.send(err);
          }
       
@@ -58,7 +58,8 @@ export const PostIntoBasket = (req,res)=>{
             productId:id,
             img:result.img,
             title:result.title,
-            price:result.price
+            price:result.price,
+            sizes:result.sizes
          });
          newBasket.save((err,basketResult)=>{
             if(err){
